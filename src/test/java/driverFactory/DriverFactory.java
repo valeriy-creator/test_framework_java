@@ -40,6 +40,7 @@ public class DriverFactory {
     public static WebDriver getDriver(String browser){
         driverThread.get().getDriver(browser).manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver = driverThread.get().getDriver(browser);
+        driver.manage().window().maximize();
         return driver;
     }
 
@@ -53,11 +54,12 @@ public class DriverFactory {
         methodName = method.getName();
         String timeStamp = new SimpleDateFormat("HH.mm a", Locale.US).format(new Date());
         System.out.print("\n"+ANSI_GREEN_BACKGROUND + "Method: "+methodName +", time: "+timeStamp + ANSI_RESET+"\n");
-
     }
 
     @AfterMethod(alwaysRun = true)
     public void clearCookies() throws Exception {
+        if(null!=driverThread.get()){
+            driverThread.get().quitDriver();}
 //        if(driver!=null)
 //            driver.manage().deleteAllCookies();
     }

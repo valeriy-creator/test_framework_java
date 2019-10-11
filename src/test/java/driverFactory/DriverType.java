@@ -31,36 +31,33 @@ public enum DriverType implements DriverSetup {
     },
     CHROME {
         public DesiredCapabilities getDesiredCapabilities() {
-            ChromeOptions options = new ChromeOptions();
             DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+            ChromeOptions options = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
             options.setExperimentalOption("useAutomationExtension", false);
             options.addArguments("disable-infobars");
-            options.addArguments("--headless");
+            options.addArguments("headless");
             options.addArguments("disable-extensions");
             options.setExperimentalOption("prefs", prefs);
-            options.addArguments("chrome.switches","--disable-extensions");
-            options.addArguments("--SeleniumFoxXlsCreated-type");
             capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
-            capabilities.setCapability("chrome.switches", Collections.singletonList("--disable-extensions"));
-            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+            options.addArguments("--disable-notifications");
+            options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+
+            options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1200","--ignore-certificate-errors");
             prefs.put("profile.password_manage_enabled", "true");
             prefs.put("credentials_enable_service", true);
             prefs.put("password_manager_enabled", true);
             prefs.put("profile.default_content_settings.popups", 0);
-
-//            options.addArguments("--disable-notifications");
-//            options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-//            prefs.put("profile.default_content_setting_values.notifications", 2);
-//            prefs.put( "profile.content_settings.pattern_pairs.*.multiple-automatic-downloads", 1 );
-//            prefs.put("download.prompt_for_download", false);
-//            prefs.put("profile.password_manage_enabled", "false");
+            prefs.put("profile.default_content_setting_values.notifications", 2);
+            prefs.put( "profile.content_settings.pattern_pairs.*.multiple-automatic-downloads", 1 );
+            prefs.put("download.prompt_for_download", false);
+            prefs.put("profile.password_manage_enabled", "false");
             capabilities.setCapability("chrome.prefs", prefs);
-
+            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
             return capabilities;
         }
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities){
-//            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/SeleniumFoxXlsCreated/resources/chromedriver");
+//            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/test/resources/webdrivers/chromedriver");
 //            System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "");
             WebDriverManager.chromedriver().setup();
             return new ChromeDriver(capabilities);

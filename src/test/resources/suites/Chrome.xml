@@ -4,7 +4,8 @@
     <test name="regression" preserve-order="false">
         <parameter name="browser" value="CHROME"/>
         <classes>
-            <class name="ui.AmazonLandingPageTest"/>
+            <!--<class name="ui.AmazonLandingPageTest"/>-->
+            <class name="ui.VideoPlayerYouTubeTest"/>
         </classes>
     </test>
 </suite>

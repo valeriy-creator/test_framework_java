@@ -47,8 +47,8 @@ public class AmazonLandingPage extends Page{
         WebDriver driver = DriverFactory.getDriver(browser);
         driver.findElement(By.xpath(clickBtn)).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);// implicity
-//        Unity.waitUntilElementPresent(driver, 10 , By.xpath(expectElement)); //explicit wait
-//        Wait waiter  = Unity.waitUntilElementPresentFluent(driver, 10, 2);//fluent wait
+//        Utility.waitUntilElementPresent(driver, 10 , By.xpath(expectElement)); //explicit wait
+//        Wait waiter  = Utility.waitUntilElementPresentFluent(driver, 10, 2);//fluent wait
         String actual = driver.findElement(By.xpath(expectElement)).getText();
         String attributeText = driver.findElement(By.xpath(expectElement)).getAttribute("alt");
         if(actual.isEmpty()){

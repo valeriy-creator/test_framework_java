@@ -1,14 +1,10 @@
 package ui;
 
-import common.Unity;
 import driverFactory.DriverFactory;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.AmazonLandingPage;
-
-import java.util.List;
 
 public class AmazonLandingPageTest extends AmazonLandingPage{
 
@@ -101,7 +97,7 @@ public class AmazonLandingPageTest extends AmazonLandingPage{
 ////            jse.executeScript("arguments[0].scrollIntoView();", title69);
 ////        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 //
-//            Unity.scrollToBottomSlowly(driver,title69);
+//            Utility.scrollToBottomSlowly(driver,title69);
 ////
 //    }
 
