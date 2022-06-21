@@ -29,7 +29,7 @@
         <!--<hamcrest-version>1.3</hamcrest-version>-->
         <!--<testng.version>6.14.3</testng.version>-->
         <!--&lt;!&ndash;<junit.version>4.12</junit.version>&ndash;&gt;-->
-        <!--<mysql.version>6.0.4</mysql.version>-->
+        <!--<mysql.version>8.0.28</mysql.version>-->
         <!--<hibernate.version>4.3.11.Final</hibernate.version>-->
         <!--&lt;!&ndash;<fasterxml.jackson.version>2.8.3</fasterxml.jackson.version>&ndash;&gt;-->
         <!--<phantomjsdriver.version>1.3.0</phantomjsdriver.version>-->
